@@ -25,7 +25,7 @@ As a user using this interface, I want to be able to do the following:
     - Filter by Alcohol by Volume (the "abv" property of each beer)
       by allowing the user to specify a range of acceptable ABV
       values
-    - Filter by the "style\_name" property of the beers, either using
+    - Filter by the `style_name` property of the beers, either using
       a text field or by providing the user with possible
       options
 - Display a list of results either dynamically or with a Search
