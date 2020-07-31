@@ -1,9 +1,9 @@
 Beer Chooser Coding Exercise
 ============================
 
-In this exercise, the goal is to create a simple user interface using Angular
-that can search and filter a list of beers to help the user select a beer to
-drink based on his/her criteria.
+In this exercise, the goal is to create a simple user interface using a modern
+framework (e.g. Angular, React, Vue) that can search and filter a list of beers
+to help the user select a beer to drink based on his/her criteria.
 
 Data
 ----
