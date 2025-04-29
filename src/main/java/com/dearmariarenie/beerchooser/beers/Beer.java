@@ -1,4 +1,4 @@
-package com.dearmariarenie.models;
+package com.dearmariarenie.beerchooser.beers;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,4 +1,4 @@
-package com.dearmariarenie;
+package com.dearmariarenie.beerchooser;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
