@@ -20,13 +20,13 @@ public class BeerController
     @GetMapping
     public ResponseEntity<List<Beer>> getAllBeers()
     {
-        return new ResponseEntity<List<Beer>>(service.findAllBeers(), HttpStatus.OK);
+        return new ResponseEntity<>(service.findAllBeers(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Beer>> getBeer(@PathVariable String id)
     {
         var idInt = Integer.parseInt(id); // TODO NumberFormatException
-        return new ResponseEntity<Optional<Beer>>(service.findBeerById(idInt), HttpStatus.OK);
+        return new ResponseEntity<>(service.findBeerById(idInt), HttpStatus.OK);
     }
 }
