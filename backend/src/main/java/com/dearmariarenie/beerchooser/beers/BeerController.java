@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,10 +24,9 @@ public class BeerController
         return new ResponseEntity<>(service.findAllBeers(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<Beer>> getBeer(@PathVariable String id)
+    @GetMapping("/search")
+    public ResponseEntity<List<Beer>> searchBeers(@RequestBody BeerSearchCriteria criteria)
     {
-        var idInt = Integer.parseInt(id); // TODO NumberFormatException
-        return new ResponseEntity<>(service.findBeerById(idInt), HttpStatus.OK);
+        return new ResponseEntity<>(service.searchBeers(criteria), HttpStatus.OK);
     }
 }
