@@ -105,13 +105,17 @@ function BeerListView({beerList})
     const beerViews = beerList.map(beer =>
         <div key={beer.id}>
             <p>
-                {beer.name}
+                ID: {beer.id}
                 <br />
-                {beer.abv}% - {beer.brewery}
+                Name: {beer.name}
                 <br />
-                {beer.style}
+                ABV: {beer.abv}%
                 <br />
-                {beer.description}
+                Style: {beer.style}
+                <br />
+                Description: {beer.description}
+                <br />
+                Brewery: {beer.brewery}
             </p>
         </div>
     );
