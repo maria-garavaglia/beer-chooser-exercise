@@ -4,7 +4,16 @@ import {useState} from 'react';
 
 export default function App()
 {
-    const [beerList, setBeerList] = useState(null);
+    const [beerList, setBeerList] = useState([
+        {
+            id: 0,
+            name: "Test Beer",
+            abv: 10.5,
+            style: "Test Beer Style",
+            description: "A beer used to test the Beer Chooser",
+            breweryId: 1234
+        }
+    ]);
 
     function applyFilter()
     {
