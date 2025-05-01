@@ -11,7 +11,7 @@ export default function App()
             abv: 10.5,
             style: "Test Beer Style",
             description: "A beer used to test the Beer Chooser",
-            breweryId: 1234
+            brewery: 1234
         }
     ]);
 
@@ -54,12 +54,19 @@ function FilterForm({action, beerList})
 function BeerListView({beerList})
 {
     const beerViews = beerList.map(beer =>
-        <li key={beer.id}>
-            {beer.name}
-        </li>
+        <div>
+            <p>
+                <h3>{beer.name}</h3>
+                {beer.abv}% - {beer.brewery}
+                <br />
+                {beer.style}
+                <br />
+                {beer.description}
+            </p>
+        </div>
     );
 
     return (
-        <ul>{beerViews}</ul>
+        <div>{beerViews}</div>
     );
 }
