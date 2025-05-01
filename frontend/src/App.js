@@ -1,8 +1,11 @@
 import './App.css';
+import {useState} from 'react';
 //import axios from 'axios';
 
 export default function App()
 {
+    const [beerList, setBeerList] = useState(null);
+
     function applyFilter()
     {
         console.log("Applying filter");
@@ -11,11 +14,12 @@ export default function App()
     return (
         <div>
             <FilterForm action={applyFilter} />
+            <BeerListView beerList={beerList} />
         </div>
     );
 }
 
-function FilterForm({action})
+function FilterForm({action, beerList})
 {
     return (
         <form action={action}>
@@ -36,5 +40,17 @@ function FilterForm({action})
             <button type="submit">Apply</button>
         </form>
     );
+}
 
+function BeerListView({beerList})
+{
+    const beerViews = beerList.map(beer =>
+        <li key={beer.id}>
+            {beer.name}
+        </li>
+    );
+
+    return (
+        <ul>{beerViews}</ul>
+    );
 }
