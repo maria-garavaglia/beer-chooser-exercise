@@ -1,6 +1,6 @@
 import './App.css';
 import {useState} from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 
 export default function App()
 {
@@ -23,16 +23,6 @@ export default function App()
         }
     ]);
 
-    return (
-        <div>
-            <FilterForm />
-            <BeerListView beerList={beerList} />
-        </div>
-    );
-}
-
-function FilterForm()
-{
     const [filter, setFilter] = useState({
         name: "",
         style: "",
@@ -76,28 +66,36 @@ function FilterForm()
 
     function applyFilter(e)
     {
-        // TODO query beer database
-        console.log("Applying filter");
         console.log(filter);
+        axios.get('http://localhost:8080/beers')
+            .then(res => {
+                const foundBeers = res.data;
+                setBeerList(foundBeers);
+            })
+        ;
     }
 
     return (
         <div>
             <div>
-                Name:
-                <input value={filter.name} onChange={handleChangeName} />
+                <div>
+                    Name:
+                    <input value={filter.name} onChange={handleChangeName} />
+                </div>
+                <div>
+                    Style:
+                    <input value={filter.style} onChange={handleChangeStyle} />
+                </div>
+                <div>
+                    ABV:
+                    <input value={filter.abvMin} onChange={handleChangeAbvMin} />
+                    -
+                    <input value={filter.abvMax} onChange={handleChangeAbvMax} />
+                </div>
+                <button onClick={applyFilter}>Apply</button>
             </div>
-            <div>
-                Style:
-                <input value={filter.style} onChange={handleChangeStyle} />
-            </div>
-            <div>
-                ABV:
-                <input value={filter.abvMin} onChange={handleChangeAbvMin} />
-                -
-                <input value={filter.abvMax} onChange={handleChangeAbvMax} />
-            </div>
-            <button onClick={applyFilter}>Apply</button>
+            <p>Showing {beerList.length} matching beers</p>
+            <BeerListView beerList={beerList} />
         </div>
     );
 }
