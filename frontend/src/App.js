@@ -115,7 +115,13 @@ function BeerListView({beerList})
                 <br />
                 Description: {beer.description}
                 <br />
-                Brewery: {beer.brewery}
+                Brewery: {
+                    beer.brewery
+                        ? beer.brewery.name + ", "
+                            + beer.brewery.city + ", "
+                            + beer.brewery.state
+                        : "Unknown"
+                    }
             </p>
         </div>
     );

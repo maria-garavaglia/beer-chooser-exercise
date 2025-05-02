@@ -1,7 +1,7 @@
 package com.dearmariarenie.beerchooser;
 
 import com.dearmariarenie.beerchooser.beers.Beer;
-import com.dearmariarenie.beerchooser.breweries.Brewery;
+import com.dearmariarenie.beerchooser.beers.Brewery;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
