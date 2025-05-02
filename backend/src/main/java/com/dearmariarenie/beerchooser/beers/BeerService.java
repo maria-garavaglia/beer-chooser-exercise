@@ -49,6 +49,14 @@ public class BeerService
      */
     private boolean containsIgnoreCase(String str, String sub)
     {
+        if (str == null)
+        {
+            return sub == null || sub.isEmpty();
+        }
+        if (sub == null)
+        {
+            return true;
+        }
         return str.toLowerCase().contains(sub.toLowerCase());
     }
 

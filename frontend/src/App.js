@@ -67,8 +67,18 @@ export default function App()
     function applyFilter(e)
     {
         console.log(filter);
-        axios.get('http://localhost:8080/beers')
-            .then(res => {
+        axios.get(
+            'http://localhost:8080/beers/search',
+            {
+                params: {
+                    name: filter.name,
+                    style: filter.style,
+                    abvMin: filter.abvMin,
+                    abvMax: filter.abvMax
+                }
+            }
+        ).then(
+            res => {
                 const foundBeers = res.data;
                 setBeerList(foundBeers);
             })
