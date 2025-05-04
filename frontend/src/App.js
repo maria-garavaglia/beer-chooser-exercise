@@ -1,4 +1,5 @@
 import './App.css';
+import BeerListView from './BeerListView.js';
 import {useState} from 'react';
 import axios from 'axios';
 
@@ -107,30 +108,5 @@ export default function App()
             <p>Showing {beerList.length} matching beers</p>
             <BeerListView beerList={beerList} />
         </div>
-    );
-}
-
-function BeerListView({beerList})
-{
-    const beerViews = beerList.map(beer =>
-        <div key={beer.id}>
-                <h3>{beer.name}</h3>
-                <p>{beer.style} - {beer.abv}%
-                <br />
-                {
-                    beer.brewery
-                        ? beer.brewery.name + " - "
-                            + beer.brewery.city + ", "
-                            + beer.brewery.state
-                        : "Unknown"
-                }
-                <br />
-                {beer.description}
-            </p>
-        </div>
-    );
-
-    return (
-        <div>{beerViews}</div>
     );
 }
