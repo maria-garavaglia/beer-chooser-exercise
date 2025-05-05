@@ -1,9 +1,9 @@
 export default function BeerListView({beer})
 {
     return (
-        <div key={beer.id}>
-                <h3>{beer.name}</h3>
-                <p>{beer.style} - {beer.abv}%
+        <div>
+            <h3>{beer.name}</h3>
+            <p>{beer.style} - {beer.abv}%
                 <br />
                 {
                     beer.brewery

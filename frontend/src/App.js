@@ -5,7 +5,6 @@ import {useState} from 'react';
 
 export default function App()
 {
-
     const [filter, setFilter] = useState({
         name: "",
         style: "",
@@ -15,7 +14,7 @@ export default function App()
 
     return (
         <div>
-            <FilterForm searchCriteria={filter} onApply={setFilter} />
+            <FilterForm searchCriteria={filter} applyNewFilter={setFilter} />
             <BeerListView searchCriteria={filter} />
         </div>
     );

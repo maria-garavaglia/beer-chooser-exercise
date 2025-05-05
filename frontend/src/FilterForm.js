@@ -1,8 +1,8 @@
 import {useState} from 'react';
 
-export default function FilterForm({searchCriteria, onApply})
+export default function FilterForm({searchCriteria, applyNewFilter})
 {
-    const [pendingSearch, setPendingSearch] = useState({searchCriteria});
+    const [pendingSearch, setPendingSearch] = useState(searchCriteria);
 
     function handleChangeName(e)
     {
@@ -54,7 +54,7 @@ export default function FilterForm({searchCriteria, onApply})
                 -
                 <input value={pendingSearch.abvMax} onChange={handleChangeAbvMax} />
             </div>
-            <button onClick={() => onApply(pendingSearch)}>Apply</button>
+            <button onClick={() => applyNewFilter(pendingSearch)}>Apply</button>
         </div>
     );
 }
