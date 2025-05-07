@@ -13,9 +13,13 @@ export default function App()
     });
 
     return (
-        <div>
-            <FilterForm searchCriteria={filter} applyNewFilter={setFilter} />
-            <BeerListView searchCriteria={filter} />
+        <div class="main-wrapper">
+            <div class="filter-sidebar">
+                <FilterForm searchCriteria={filter} applyNewFilter={setFilter} />
+            </div>
+            <div class="main-content">
+                <BeerListView searchCriteria={filter} />
+            </div>
         </div>
     );
 }

@@ -1,3 +1,4 @@
+import './FilterForm.css';
 import {useState} from 'react';
 
 export default function FilterForm({searchCriteria, applyNewFilter})
@@ -39,22 +40,20 @@ export default function FilterForm({searchCriteria, applyNewFilter})
     }
 
     return (
-        <div>
-            <div>
-                Name:
-                <input value={pendingSearch.name} onChange={handleChangeName} />
+        <div class="filter-form-wrapper">
+            <div class="filter-field">
+                Name: <br />
+                <input class="text-input" value={pendingSearch.name} onChange={handleChangeName} />
             </div>
-            <div>
-                Style:
-                <input value={pendingSearch.style} onChange={handleChangeStyle} />
+            <div class="filter-field">
+                Style: <br />
+                <input class="text-input" value={pendingSearch.style} onChange={handleChangeStyle} />
             </div>
-            <div>
-                ABV:
-                <input value={pendingSearch.abvMin} onChange={handleChangeAbvMin} />
-                -
-                <input value={pendingSearch.abvMax} onChange={handleChangeAbvMax} />
+            <div class="filter-field">
+                ABV: <br />
+                <input class="abv-input" value={pendingSearch.abvMin} onChange={handleChangeAbvMin} /> - <input class="abv-input" value={pendingSearch.abvMax} onChange={handleChangeAbvMax} /> %
             </div>
-            <button onClick={() => applyNewFilter(pendingSearch)}>Apply</button>
+            <button  class="filter-field" onClick={() => applyNewFilter(pendingSearch)}>Apply</button>
         </div>
     );
 }
