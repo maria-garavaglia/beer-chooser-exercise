@@ -38,19 +38,19 @@ export default function SearchForm({activeSearch, setActiveSearch})
     }
 
     return (
-        <div class="filter-form-wrapper">
-            <div class="filter-field">
+        <div className="filter-form-wrapper">
+            <div className="filter-field">
                 Name: <br />
-                <input class="text-input" value={pendingSearch.name} onChange={handleChangeName} />
+                <input className="text-input" value={pendingSearch.name} onChange={handleChangeName} />
             </div>
-            <div class="filter-field">
+            <div className="filter-field">
                 Style: <br />
-                <input class="text-input" value={pendingSearch.style} onChange={handleChangeStyle} />
+                <input className="text-input" value={pendingSearch.style} onChange={handleChangeStyle} />
             </div>
-            <div class="filter-field">
+            <div className="filter-field">
                 ABV: <br />
                 <input
-                    class="abv-input"
+                    className="abv-input"
                     type="number"
                     min="0"
                     max="100"
@@ -59,7 +59,7 @@ export default function SearchForm({activeSearch, setActiveSearch})
                 />
                 &nbsp;-&nbsp;
                 <input
-                    class="abv-input"
+                    className="abv-input"
                     type="number"
                     min="0"
                     max="100"
@@ -67,7 +67,7 @@ export default function SearchForm({activeSearch, setActiveSearch})
                     onChange={handleChangeAbvMax}
                 /> %
             </div>
-            <button  class="filter-field" onClick={() => setActiveSearch(pendingSearch)}>Search</button>
+            <button className="filter-field" onClick={() => setActiveSearch(pendingSearch)}>Search</button>
         </div>
     );
 }

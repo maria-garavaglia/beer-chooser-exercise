@@ -15,10 +15,10 @@ export default function App()
 
     return (
         <div>
-            <div class="filter-sidebar">
+            <div className="filter-sidebar">
                 <SearchForm activeSearch={search} setActiveSearch={setSearch} />
             </div>
-            <div class="main-content">
+            <div className="main-content">
                 <BeerListView searchCriteria={search} />
             </div>
         </div>

@@ -33,17 +33,17 @@ export default function BeerListView({beer})
     }
 
     return (
-        <div class="beerView">
-            <h3 class="name">
+        <div className="beerView">
+            <h3 className="name">
                 {beer.name}
             </h3>
-            <p class="styleAbv">
+            <p className="styleAbv">
                 {beer.style} - {formatAbv()}%
             </p>
-            <p class="description">
+            <p className="description">
                 {beer.description}
             </p>
-            <p class="brewery">{formatBrewery()}</p>
+            <p className="brewery">{formatBrewery()}</p>
         </div>
     );
 }
