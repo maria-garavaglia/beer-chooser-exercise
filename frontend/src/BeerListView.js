@@ -6,6 +6,7 @@ export default function BeerListView({searchCriteria})
 {
     const [currentFilter, setCurrentFilter] = useState(null);
     const [beerList, setBeerList] = useState(null);
+    const [error, setError] = useState(false);
 
     if (currentFilter != searchCriteria)
     {
@@ -24,11 +25,39 @@ export default function BeerListView({searchCriteria})
             res => {
                 const foundBeers = res.data;
                 setBeerList(foundBeers);
-            })
-        ;
+                setError(false);
+            }
+        ).catch(
+            function (error)
+            {
+                if (error.response)
+                {
+                    // Request made, server responded with something outside 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+                else if (error.request)
+                {
+                    // Request made, no response
+                    console.log(error.request);
+                }
+                else
+                {
+                    // Something happened in setting up the request
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
+                setError(true);
+            }
+        );
     }
 
-    if (beerList === null)
+    if (error)
+    {
+        return <p style={{color: "red"}}>Error encountered while loading beer list</p>;
+    }
+    else if (beerList === null)
     {
         return <p>Loading...</p>;
     }
