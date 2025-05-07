@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,15 +17,25 @@ import org.springframework.core.io.Resource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * Main back-end entry point
+ */
 @SpringBootApplication
 public class Main
 {
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
+
+    private static final String BEERS_FILENAME = "beers.json";
+    private static final String BREWERIES_FILENAME = "breweries.json";
 
     public static void main(String[] args)
     {
         SpringApplication.run(Main.class, args);
     }
 
+    /**
+     * Basic webapp configuration
+     */
     @Bean
     public WebMvcConfigurer corsConfigurer()
     {
@@ -45,23 +57,22 @@ public class Main
     // Since this is just an exercise, we'll just read in the list of beers/breweries directly from
     // JSON instead of creating a whole database + Repository classes
     @Bean
-    public List<Beer> beerList(@Value("classpath:beers.json") Resource data)
+    public List<Beer> beerList(@Value("classpath:" + BEERS_FILENAME) Resource data)
     {
-        final String BEERS_FILENAME = "beers.json";
         var jsonReader = new ObjectMapper();
         try
         {
-            System.out.print("Loading beers from JSON... ");
+            logger.info("Loading beers from JSON... ");
             var beerList = jsonReader.readValue(
                 data.getFile(),
                 new TypeReference<List<Beer>>(){}
             );
-            System.out.println(beerList.size() + " beers loaded");
+            logger.info("...{} beers loaded", beerList.size());
             return beerList;
         }
         catch (IOException e)
         {
-            System.out.println("Failed to load beer list '" + BEERS_FILENAME + "': " + e.getMessage());
+            logger.error("Failed to load beer list '{}'", BEERS_FILENAME, e);
             return new ArrayList<>();
         }
     }
@@ -69,20 +80,24 @@ public class Main
     // Since this is just an exercise, we'll just read in the list of beers/breweries directly from
     // JSON instead of creating a whole database + Repository classes
     @Bean
-    public List<Brewery> breweryList(@Value("classpath:breweries.json") Resource data)
+    public List<Brewery> breweryList(@Value("classpath:" + BREWERIES_FILENAME) Resource data)
     {
-        final String BREWERIES_FILENAME = "breweries.json";
         var jsonReader = new ObjectMapper();
         try
         {
-            System.out.print("Loading breweries from JSON... ");
-            var breweryList = jsonReader.readValue(data.getFile(), new TypeReference<List<Brewery>>(){});
-            System.out.println(breweryList.size() + " beers loaded");
+            logger.info("Loading breweries from JSON... ");
+            var breweryList = jsonReader.readValue(
+                data.getFile(),
+                new TypeReference<List<Brewery>>(){}
+            );
+            logger.info("...{} breweries loaded", breweryList.size());
             return breweryList;
         }
         catch (IOException e)
         {
-            System.out.println("Failed to load brewery list '" + BREWERIES_FILENAME + "': " + e.getMessage());
+            logger.error(
+                "Failed to load brewery list '{}'", BREWERIES_FILENAME, e
+            );
             return new ArrayList<>();
         }
     }
