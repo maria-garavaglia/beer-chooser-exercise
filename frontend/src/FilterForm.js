@@ -23,7 +23,6 @@ export default function FilterForm({searchCriteria, applyNewFilter})
 
     function handleChangeAbvMin(e)
     {
-        // TODO error checking
         setPendingSearch({
             ...pendingSearch,
             abvMin: e.target.value
@@ -32,7 +31,6 @@ export default function FilterForm({searchCriteria, applyNewFilter})
 
     function handleChangeAbvMax(e)
     {
-        // TODO error checking
         setPendingSearch({
             ...pendingSearch,
             abvMax: e.target.value
@@ -51,7 +49,23 @@ export default function FilterForm({searchCriteria, applyNewFilter})
             </div>
             <div class="filter-field">
                 ABV: <br />
-                <input class="abv-input" value={pendingSearch.abvMin} onChange={handleChangeAbvMin} /> - <input class="abv-input" value={pendingSearch.abvMax} onChange={handleChangeAbvMax} /> %
+                <input
+                    class="abv-input"
+                    type="number"
+                    min="0"
+                    max="100"
+                    value={pendingSearch.abvMin}
+                    onChange={handleChangeAbvMin}
+                />
+                &nbsp;-&nbsp;
+                <input
+                    class="abv-input"
+                    type="number"
+                    min="0"
+                    max="100"
+                    value={pendingSearch.abvMax}
+                    onChange={handleChangeAbvMax}
+                /> %
             </div>
             <button  class="filter-field" onClick={() => applyNewFilter(pendingSearch)}>Apply</button>
         </div>
