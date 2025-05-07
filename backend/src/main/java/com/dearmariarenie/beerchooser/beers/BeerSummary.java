@@ -1,5 +1,8 @@
 package com.dearmariarenie.beerchooser.beers;
 
+/**
+ * Contains information on a single beer, organized and pared down for easier viewing.
+ */
 public record BeerSummary(
     int id,
     String name,

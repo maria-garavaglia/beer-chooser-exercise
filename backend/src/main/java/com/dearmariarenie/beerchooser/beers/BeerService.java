@@ -6,6 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service providing a list of requested beers in summary format.
+ */
 @Service
 public class BeerService
 {
@@ -14,16 +17,23 @@ public class BeerService
     @Autowired
     private List<Brewery> breweryList;
 
+    /**
+     * Returns the full list of beers, converted to summary format.
+     */
     public List<BeerSummary> findAllBeers()
     {
         return beerList.stream().map(beer ->
             new BeerSummary(
                 beer,
+                // find brewery corresponding to ID (if it exists)
                 findBrewery(beer.brewery_id()).orElse(null)
             )
         ).toList();
     }
 
+    /**
+     * Returns a list of beers matching the given search criteria, converted to summary format.
+     */
     public List<BeerSummary> searchBeers(BeerSearchCriteria criteria)
     {
         // Filter out beers by each criterion, then convert each to a summary class containing data to be displayed
@@ -40,6 +50,9 @@ public class BeerService
         ;
     }
 
+    /**
+     * Finds the brewery matching the given ID, if it exists.
+     */
     private Optional<Brewery> findBrewery(int breweryId)
     {
         return breweryList.stream()

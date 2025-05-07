@@ -3,6 +3,9 @@ package com.dearmariarenie.beerchooser.beers;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Contains information about a single brewery. Fields map directly to incoming JSON file.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record Brewery(
     int id,
