@@ -8,11 +8,16 @@ export default function BeerListView({searchCriteria})
     const [beerList, setBeerList] = useState(null);
     const [error, setError] = useState(false);
 
+    const axiosInstance = axios.create({
+        baseURL: "http://localhost:8080/",
+        timeout: 3000
+    });
+
     if (currentFilter != searchCriteria)
     {
         setCurrentFilter(searchCriteria);
-        axios.get(
-            'http://localhost:8080/beers/search',
+        axiosInstance.get(
+            'beers/search',
             {
                 params: {
                     name: searchCriteria.name,
