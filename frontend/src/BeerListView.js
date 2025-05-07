@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export default function BeerListView({searchCriteria})
 {
-    const [currentFilter, setCurrentFilter] = useState(null);
+    const [currentSearch, setCurrentSearch] = useState(null);
     const [beerList, setBeerList] = useState(null);
     const [error, setError] = useState(false);
 
@@ -13,9 +13,9 @@ export default function BeerListView({searchCriteria})
         timeout: 3000
     });
 
-    if (currentFilter != searchCriteria)
+    if (currentSearch != searchCriteria)
     {
-        setCurrentFilter(searchCriteria);
+        setCurrentSearch(searchCriteria);
         axiosInstance.get(
             'beers/search',
             {

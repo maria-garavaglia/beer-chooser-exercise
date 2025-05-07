@@ -1,11 +1,12 @@
 import './App.css';
 import BeerListView from './BeerListView.js';
-import FilterForm from './FilterForm.js';
+import SearchForm from './SearchForm.js';
 import {useState} from 'react';
 
 export default function App()
 {
-    const [filter, setFilter] = useState({
+    // active search defined here so both FilterForm and BeerListView can see it
+    const [search, setSearch] = useState({
         name: "",
         style: "",
         abvMin: 0.0,
@@ -13,12 +14,12 @@ export default function App()
     });
 
     return (
-        <div class="main-wrapper">
+        <div>
             <div class="filter-sidebar">
-                <FilterForm searchCriteria={filter} applyNewFilter={setFilter} />
+                <SearchForm activeSearch={search} setActiveSearch={setSearch} />
             </div>
             <div class="main-content">
-                <BeerListView searchCriteria={filter} />
+                <BeerListView searchCriteria={search} />
             </div>
         </div>
     );

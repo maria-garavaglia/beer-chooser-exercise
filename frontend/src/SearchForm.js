@@ -1,9 +1,9 @@
-import './FilterForm.css';
+import './SearchForm.css';
 import {useState} from 'react';
 
-export default function FilterForm({searchCriteria, applyNewFilter})
+export default function SearchForm({activeSearch, setActiveSearch})
 {
-    const [pendingSearch, setPendingSearch] = useState(searchCriteria);
+    const [pendingSearch, setPendingSearch] = useState(activeSearch);
 
     function handleChangeName(e)
     {
@@ -67,7 +67,7 @@ export default function FilterForm({searchCriteria, applyNewFilter})
                     onChange={handleChangeAbvMax}
                 /> %
             </div>
-            <button  class="filter-field" onClick={() => applyNewFilter(pendingSearch)}>Apply</button>
+            <button  class="filter-field" onClick={() => setActiveSearch(pendingSearch)}>Search</button>
         </div>
     );
 }
