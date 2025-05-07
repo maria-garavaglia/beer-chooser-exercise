@@ -27,13 +27,18 @@ export default function BeerListView({beer})
         return "Brewery Unknown";
     }
 
+    function formatAbv()
+    {
+        return Math.round(beer.abv * 100) / 100;
+    }
+
     return (
         <div class="beerView">
             <h3 class="name">
                 {beer.name}
             </h3>
             <p class="styleAbv">
-                {beer.style} - {beer.abv}%
+                {beer.style} - {formatAbv()}%
             </p>
             <p class="description">
                 {beer.description}
