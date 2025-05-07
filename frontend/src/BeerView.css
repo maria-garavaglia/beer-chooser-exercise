@@ -1,0 +1,18 @@
+.beerView {
+    padding-bottom: 15px;
+}
+
+.name {
+    display: inline;
+    margin-right: 5px;
+}
+
+.styleAbv, .brewery {
+    display: inline;
+    font-style: italic;
+    font-size: 0.75em;
+}
+
+.description {
+    margin: 0 0 0 0;
+}
