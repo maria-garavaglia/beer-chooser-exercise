@@ -1,5 +1,6 @@
 package com.dearmariarenie.beerchooser.beers;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,6 +40,7 @@ public class BeerService
         // Filter out beers by each criterion, then convert each to a summary class containing data to be displayed
         return beerList.stream()
             .filter(b -> b.matchesSearch(criteria))
+            .sorted(Comparator.comparing(Beer::name))
             .map(beer ->
                 new BeerSummary(
                     beer,
